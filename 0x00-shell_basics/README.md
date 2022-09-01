@@ -1,2 +1,2 @@
-Writing a scriptthat prints the absolute path name of the current working directory
+How to write and run a script.
 
