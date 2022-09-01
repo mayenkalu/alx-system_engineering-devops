@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -pamUX --group-directories-first 
+ls -pam | sort -d
