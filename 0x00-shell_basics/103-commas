@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -mauX --group-directories-first
+ls -pamuX --group-directories-first 
