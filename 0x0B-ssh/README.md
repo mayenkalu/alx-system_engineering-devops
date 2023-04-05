@@ -18,6 +18,8 @@ This will initiate an SSH session to the remote host, using the private key for 
 
 The advantage of using `#!/usr/bin/env` bash instead of `/bin/bash` in a bash script is that it allows the script to be executed by any interpreter in the user's path, rather than being limited to a specific location. This can help ensure portability and avoid issues with different systems having different paths to the interpreter.
 
+The `curl` command is a tool used in command-line interfaces to transfer data to or from a server, using one of the supported protocols such as HTTP, FTP, SMTP, etc. `curl` allows users to send HTTP requests and receive responses from the server, and it can be used for testing web applications, debugging network issues, and automating various tasks. The `curl` command can also handle cookies, authentication, SSL, and other protocols and features.
+
 ## Task Description:
 1. [0-use_a_private_key](./0-use_a_private_key)
 	- Bash script that uses `ssh` to connect to my server ussing `~/.ssh/school`
