@@ -1,4 +1,4 @@
-# An ssh config file
+# An SSH config file
 Host *
-      PasswordAuthentication no
-      IdentifyFile ~/.ssh/school
+    PasswordAuthentication no
+    IdentityFile ~/.ssh/school
