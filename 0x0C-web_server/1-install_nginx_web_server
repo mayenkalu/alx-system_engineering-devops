@@ -1,12 +1,16 @@
-#!/usr/bin/env bash
-# Installs Nginx web server with configure it:
-#   Listens on port 80.
-#   Returns a page containing "Hello World" when queried
-#   at the root with a curl GET request.
 
-apt-get -y update
-apt-get -y install nginx
-# It is used to allow incoming connections to the Nginx HTTP server through the firewall through port 80. using the ufw (Uncomplicated Firewall) command-line tool.
-sudo ufw allow 'Nginx HTTP'
-echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 service nginx start
+sckage list
+sudo apt-get update
+
+# Install Nginx
+sudo apt-get install nginx -y
+
+# Configure Nginx to listen on port 80
+sudo sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
+
+# Restart Nginx
+sudo service nginx restart
+
+# Create index.html file with Hello World! message
+echo "Hello World!" | sudo tee /var/www/html/index.html
