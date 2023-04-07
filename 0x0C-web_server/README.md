@@ -37,6 +37,8 @@ There are several **DNS record types**, such as `A`, `CNAME`, `TXT`, and `MX`.
   * `TXT` record contains arbitrary text data.
   * `MX` record specifies the mail server for a domain.
 
+**TTL**, or Time-to-Live, is a value in seconds that indicates how long a DNS resolver or caching server should cache a DNS query. This helps reduce the load on authoritative DNS servers and improve the performance of the DNS system by allowing DNS resolvers to serve subsequent requests from their local cache.
+
 ## Task Description
 1. [0-transfer_file](./0-transfer_file)
   * Bash script that transfers a file from client to a server.
