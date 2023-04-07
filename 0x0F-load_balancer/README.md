@@ -61,7 +61,7 @@ backend webservers
     server web01 192.168.0.2:80 check
     server web02 192.168.0.3:80 check
 ```
-This configuration file specifies that incoming HTTP traffic on port 80 should be distributed to the webservers backend, which consists of the two web servers (`web01` and `web02`) configured with their IP addresses and port numbers. The balance roundrobin option tells Haproxy to distribute traffic using a round-robin algorithm.
+This configuration file specifies that incoming HTTP traffic on port 80 should be distributed to the `webservers` backend, which consists of the two web servers (`web01` and `web02`) configured with their IP addresses and port numbers. The `balance roundrobin` option tells Haproxy to distribute traffic using a round-robin algorithm.
 
 Once the configuration file is saved, you can start the Haproxy service and verify that it is working by accessing the load balancer's IP address in a web browser. You should see that the requests are being distributed between the two web servers.
 
