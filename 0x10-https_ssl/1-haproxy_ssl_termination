@@ -52,5 +52,5 @@ frontend www-https
 
 backend www-backend
         balance roundrobin
-        server 150499-web-01 107.23.61.222:80 check
-        server 150499-web-02 54.242.163.162:80 check
+        server 151957-web-01 52.72.12.225:80 check
+        server 151957-web-02 100.24.205.73:80 check
