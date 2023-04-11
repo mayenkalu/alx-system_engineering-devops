@@ -4,7 +4,7 @@
 # Returns a page containing "Hello World" when queried
 # at the root with a curl GET request.
 
-sudo apt-get -y update
+sudo apt-get -y updatecd 
 sudo apt-get -y install nginx
 
 # It is used to allow incoming connections to the Nginx HTTP server through the firewall through port 80. using the ufw (Uncomplicated Firewall) command-line tool.
