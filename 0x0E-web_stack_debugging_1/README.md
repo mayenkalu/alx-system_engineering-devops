@@ -1,0 +1,2 @@
+# Web stack debugging -1
+In this project, I learned how to find and fix problems that can happen while a website is running. I did this by looking at different records that the web server creates, which show important details about how it's working, including any issues or errors. By studying these records, I was able to troubleshoot errors and find ways to fix them. This helped me gain important skills for keeping web servers working well and avoiding any problems that could affect the website's performance.
