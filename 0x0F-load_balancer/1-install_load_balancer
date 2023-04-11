@@ -6,7 +6,7 @@ sudo apt-get -y update
 sudo apt-get install -y haproxy
 
 # Configure HAProxy
-echo '
+sudo echo '
 frontend www-http
         bind *:80
         mode http
