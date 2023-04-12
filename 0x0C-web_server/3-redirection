@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-# configures an Nginx server so that /redirect_me redirects to another page.
+# Configures an Nginx server so that /redirect_me redirects to another page.
 # The redirection is configured as a "301 Moved Permanently"
 # The answer file should be a Bash script containing commands to automatically configure a Ubuntu machine to respect above requirements
 # Using what you did with 1-install_nginx_web_server, write 3-redirection so that it configures a brand new Ubuntu machine to the requirements asked in this task
@@ -26,4 +25,4 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.ba
 # Setting up /redirect_me to a permanent redirect to https://twitter.com/ai_optimizer
 sudo sed -i '24i\rewrite ^/redirect_me https://twitter.com/ai_optimizer permanent;' /etc/nginx/sites-available/default
 
-service nginx restart
+sudo service nginx restart
