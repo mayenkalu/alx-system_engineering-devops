@@ -4,17 +4,19 @@
 # Returns a page containing "Hello World" when queried
 # at the root with a curl GET request.
 
-sudo apt-get -y updatecd 
+sudo pt-get -y update 
 sudo apt-get -y install nginx
 
-# It is used to allow incoming connections to the Nginx HTTP server through the firewall through port 80. using the ufw (Uncomplicated Firewall) command-line tool.
-sudo ufw allow 'Nginx HTTP'
+# Start nginx
+sudo service nginx start
 
-# change the owner of the /var/www directory to the current user recursively. To allow modification of the files in the directory.
-sudo chown -R $USER /var/www
+# Configure nginx to listen on port 80 and serve "Hello World!" on the root page
+echo "server {
+	listen 80;
+	location / {echo  'Hello World!';
+			}
+		}" > /etc/nginx/sites-available/default
 
-# set up a page containing "Hello World" when queried at the root with a curl GET request.
-echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+# Reload nginx configuration
+sudo service nginx restart
 
-# restart Nginx to apply the changes
-service nginx start
