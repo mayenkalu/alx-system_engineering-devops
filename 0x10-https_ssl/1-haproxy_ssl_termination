@@ -1,8 +1,10 @@
 # Before configure haproxy, certbot needs to be installed:
-#sudo apt-get update
-#sudo apt-get install certbot
-#sudo certbot certonly --standalone -d www.kalumayen.tech (the ssl cert @ /etc/letsencrypt/keys/)
-#sudo service haproxy restart
+# sudo apt-get update
+# sudo apt-get install certbot
+# sudo certbot certonly --standalone -d www.kalumayen.tech (to create ssl cert @ /etc/letsencrypt/keys/)
+# sudo cat /path/privkey.pem | sudo tee -a /path/fullchain.pem (to append privkey.pem to fullchain.pem cert)
+#update /etc/haproxy/haproxy.cfg  : set the bind *:443 ssl crt /path/fullchain.pem
+# sudo service haproxy restart
 
 global
         log /dev/log    local0
@@ -46,11 +48,11 @@ frontend www-http
         default_backend www-backend
 
 frontend www-https
-        bind   *:443 ssl crt /etc/letsencrypt/keys/www.kalumayen.tech-0000_key-certbot.pem
+        bind   *:443 ssl crt /etc/letsencrypt/live/www.kalumayen.tech/fullchain.pem
         http-request set-header X-Forwarded-Proto https
         default_backend www-backend
 
 backend www-backend
         balance roundrobin
-        server 150499-web-01 107.23.61.222:80 check
-        server 150499-web-02 54.242.163.162:80 check
+        server 150499-web-01 54.86.192.32:80 check
+        server 150499-web-02 52.91.118.84:80 check
