@@ -1,3 +1,4 @@
+::q!
 #!/usr/bin/env bash
 # Connects to server 54.86.192.32 with key in ~/.ssh/school
 
