@@ -1,55 +1,61 @@
 #!/usr/bin/python3
-"""Function to count words in all hot posts of a given Reddit subreddit."""
+"""
+Querries the Reddit API and returns a list of the titles of all hot posts
+listed for a given subreddit
+"""
+
+import json
 import requests
 
 
-def count_words(subreddit, word_list, instances={}, after="", count=0):
-    """Prints counts of given words found in hot posts of a given subreddit.
-
-    Args:
-        subreddit (str): The subreddit to search.
-        word_list (list): The list of words to search for in post titles.
-        instances (obj): Key/value pairs of words/counts.
-        after (str): The parameter for the next page of the API results.
-        count (int): The parameter of results matched thus far.
-    """
-    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
-    headers = {
-        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
-    }
-    params = {
-        "after": after,
-        "count": count,
-        "limit": 100
-    }
-    response = requests.get(url, headers=headers, params=params,
-                            allow_redirects=False)
-    try:
-        results = response.json()
-        if response.status_code == 404:
-            raise Exception
-    except Exception:
-        print("")
-        return
-
-    results = results.get("data")
-    after = results.get("after")
-    count += results.get("dist")
-    for c in results.get("children"):
-        title = c.get("data").get("title").lower().split()
-        for word in word_list:
-            if word.lower() in title:
-                times = len([t for t in title if t == word.lower()])
-                if instances.get(word) is None:
-                    instances[word] = times
-                else:
-                    instances[word] += times
-
-    if after is None:
-        if len(instances) == 0:
+def count_words(subreddit, word_list, hot_list=[], after=None):
+    """Return a list of the titles of all hot posts listed for a subreddit"""
+    headers = {"user-agent": "holberton"}
+    params = {"after": after}
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    subdata = requests.get(url, headers=headers, params=params)
+    if subdata.status_code != 200:
+        return None
+    data = json.loads(subdata.text).get('data').get('children')
+    after = json.loads(subdata.text).get('data').get('after')
+    if data is None:
+        if len(hot_list) == 0:
             print("")
             return
-        instances = sorted(instances.items(), key=lambda kv: (-kv[1], kv[0]))
-        [print("{}: {}".format(k, v)) for k, v in instances]
+        word_count = {}
+        word_list = list(set([word.lower() for word in word_list]))
+        for word in word_list:
+            word_count[word] = 0
+        for word in word_list:
+            for title in hot_list:
+                for t in title.split():
+                    if word == t.lower():
+                        word_count[word] = word_count[word] + 1
+        sort_word_count = sorted(word_count.items(), key=lambda x: x[1],
+                                 reverse=True)
+        for i in sort_word_count:
+            if i[1] > 0:
+                print("{}: {}".format(i[0], i[1]))
     else:
-        count_words(subreddit, word_list, instances, after, count)
+        for item in data:
+            hot_list.append(item.get('data').get('title'))
+    if after is None:
+        if len(hot_list) == 0:
+            print("")
+            return
+        word_count = {}
+        word_list = list(set([word.lower() for word in word_list]))
+        for word in word_list:
+            word_count[word] = 0
+        for word in word_list:
+            for title in hot_list:
+                for t in title.split():
+                    if word.lower() == t.lower():
+                        word_count[word] = word_count[word] + 1
+        sort_word_count = sorted(word_count.items(), key=lambda x: x[1],
+                                 reverse=True)
+        for i in sort_word_count:
+            if i[1] > 0:
+                print("{}: {}".format(i[0], i[1]))
+    else:
+        return count_words(subreddit, word_list, hot_list, after)
