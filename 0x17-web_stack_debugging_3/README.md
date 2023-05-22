@@ -13,18 +13,13 @@ Logs may not always be sufficient for debugging, especially when unexpected erro
 Web debugging plays a vital role in resolving issues within Wordpress websites on LAMP stacks. By following a systematic approach, developers can ensure smooth web application functionality.
 
 ## About :pen:
-- Using strace, find out why Apache is returning a 500 error. Once you find the issue, fix it and then automate it using Puppet (instead of using Bash as you were previously doing).
+- Using strace, to find out why Apache is returning a 500 error. Once the issue is found, use Puppet (instead of Bash as previously done) to fix it and then automate it.
 
 - Hint:
 strace can attach to a current running process
 You can use tmux to run strace in one window and curl in another one
 
--Requirements:
-Your 0-strace_is_your_friend.pp file must contain Puppet code
-You can use whatever Puppet resource type you want for you fix
-
 ## File Description:
-  * [0-strace_is_your_friend.pp](./0-strace_is_your_friend.pp): Puppet manifest
-  that fixes a typo error causing a WordPress application being served by an Apache
-  web server to fail.
-  * Usage: `puppet apply 0-strace_is_your_friend.pp`
+  * [0-strace_is_your_friend.pp](./0-strace_is_your_friend.pp): 
+    Puppet manifest that fixes a typo error causing a WordPress application being served by an Apache web server to fail.
+    * Usage: `puppet apply 0-strace_is_your_friend.pp`
