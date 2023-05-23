@@ -14,4 +14,4 @@ Monitoring is crucial for webstacks to ensure optimal performance, availability,
 Webstack monitoring ensures optimal performance, availability, and security by tracking infrastructure and application metrics. Access and error logs provide valuable insights for analysis and issue resolution.
 
 ## About :monocle_face:
-In this project, I explored monitoring webstacks using Data Dog.
+In this project, I explored monitoring webstacks using DataDog.
