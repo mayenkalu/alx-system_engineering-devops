@@ -27,8 +27,8 @@ echo "Ceci n'est pas une page" >> /var/www/html/error_404.html
 
 sudo service nginx start
 
-# Setting up /redirect_me to a permanent redirect to https://twitter.com/ai_optimizer
-sudo sed -i '24i\rewrite ^/redirect_me https://twitter.com/ai_optimizer permanent;' /etc/nginx/sites-available/default
+# Setting up /redirect_me to a permanent redirect to https://www.linkedin.com/in/mayen-kalu-inim/
+sudo sed -i '24i\rewrite ^/redirect_me https://www.linkedin.com/in/mayen-kalu-inim/ permanent;' /etc/nginx/sites-available/default
 
 # Set up error 404 page location
 sudo sed -i '25i\	error_page 404 /error_404.html;' /etc/nginx/sites-available/default
